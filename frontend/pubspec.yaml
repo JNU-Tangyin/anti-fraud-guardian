@@ -1,0 +1,35 @@
+name: anti_fraud_app
+description: "反欺诈通话卫士 — 基于通话内容 embedding 的实时欺诈检测"
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+  flutter: '>=3.16.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.1.1
+  http: ^1.2.0
+  dio: ^5.4.0
+  record: ^5.0.4
+  path_provider: ^2.1.2
+  permission_handler: ^11.2.0
+  phone_state: ^0.0.2
+  cupertino_icons: ^1.0.6
+  flutter_animate: ^4.5.0
+  google_fonts: ^6.1.0
+  shared_preferences: ^2.2.2
+  uuid: ^4.3.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/sounds/

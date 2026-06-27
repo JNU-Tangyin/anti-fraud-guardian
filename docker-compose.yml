@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: anti-fraud-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - DEVICE=cpu
+      - DEBUG=false
+      - ASR_MODEL=base
+      - TEXT_EMBED_MODEL=paraphrase-multilingual-MiniLM-L12-v2
+      - AUDIO_EMBED_MODEL=facebook/wav2vec2-base
+      - HIGH_RISK_THRESHOLD=0.75
+      - MEDIUM_RISK_THRESHOLD=0.55
+      - FUSION_ALPHA=0.5
+      - MAX_AUDIO_SECONDS=60
+    volumes:
+      - ./data:/app/data
+      - ./backend/app:/app/app
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
